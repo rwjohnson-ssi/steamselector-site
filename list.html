@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Watson McDaniel – List Sheet</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="main-header">
+    <h1>Watson McDaniel – List Sheet</h1>
+    <div><strong>Issued:</strong> <span id="issueDate"></span></div>
+  </header>
+
+  <div class="quote-container">
+    <table class="quote-table reorder-table">
+      <thead>
+        <tr>
+          <th>Reorder</th>
+          <th>Model</th>
+          <th>Size</th>
+          <th>Type</th>
+          <th>Qty</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="quoteTableBody" class="sortable">
+        <!-- Rows populated by JS -->
+      </tbody>
+    </table>
+
+    <label for="quoteNote">Additional Notes</label>
+    <textarea id="quoteNote" placeholder="Special instructions, delivery requirements, etc..."></textarea>
+  </div>
+
+  <div class="quote-actions">
+    <button type="button" onclick="saveQuote()">Save List</button>
+    <button type="button" onclick="printQuote()">Print / Save PDF</button>
+    <button type="button" onclick="exportQuoteToCSV()">Export as CSV</button>
+    <button type="button" onclick="exportQuoteToPDF()">Export as PDF (jsPDF)</button>
+    <button type="button" onclick="goBack()">Back to Products</button>
+  </div>
+
+  <!-- jsPDF + autoTable -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+
+  <script src="list.js"></script>
+</body>
+</html>

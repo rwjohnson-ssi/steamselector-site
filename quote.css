@@ -1,0 +1,176 @@
+/* ===== QUOTE SUMMARY PAGE ONLY ===== */
+body.quote-page {
+  font-family: Arial, sans-serif;
+  background: #f4f6f9;
+  padding: 1rem;
+  margin: 0;
+}
+
+.quote-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.quote-header h1 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+/* Container to help center and size the content */
+.quote-container {
+  max-width: 100%;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Table styling */
+.quote-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  table-layout: fixed; /* keeps columns stable for print/PDF */
+}
+
+.quote-table th,
+.quote-table td {
+  border: 1px solid #ccc;
+  padding: 0.75rem;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.quote-table th {
+  background-color: #003d5c;
+  color: white;
+}
+
+/* Notes */
+textarea#quoteNote {
+  width: 100%;
+  min-height: 100px;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Buttons */
+.quote-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+.quote-actions button {
+  background-color: #003d5c;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.quote-actions button:hover {
+  background-color: #005b88;
+}
+
+/* Qty print helpers */
+.qty-print {
+  display: none; /* hidden on screen */
+}
+
+/* ===== MOBILE STYLES ===== */
+@media (max-width: 768px) {
+  .quote-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .quote-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .quote-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .quote-actions button {
+    width: 100%;
+  }
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  /* Hide UI elements */
+  .quote-actions,
+  a {
+    display: none !important;
+  }
+
+  /* Hide qty input and show qty text */
+  .qty-input {
+    display: none !important;
+  }
+  .qty-print {
+    display: inline !important;
+  }
+
+  /* Hide Actions column in print (header + body cells) */
+  th.col-actions,
+  td.col-actions {
+    display: none !important;
+  }
+
+  /* Reset body for print */
+  body.quote-page,
+  html {
+    background: white;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+
+  .quote-container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .quote-table {
+    width: 100% !important;
+    table-layout: fixed;
+    font-size: 12pt;
+  }
+
+  .quote-table th,
+  .quote-table td {
+    padding: 8px;
+    border: 1px solid #ccc;
+    text-align: center;
+  }
+
+  textarea#quoteNote {
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    width: 100%;
+    font-size: 12pt;
+    box-sizing: border-box;
+  }
+
+  @page {
+    margin: 0.5in;
+  }
+}

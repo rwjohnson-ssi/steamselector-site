@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Watson McDaniel – Steam Trap Selector</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="main-header">
+    <h1>Watson McDaniel Steam Trap Selector</h1>
+    
+    <div class="action-bar">
+      <button class="action-btn filter-btn" onclick="toggleFilters()">
+        <span class="icon">≡</span> Filters
+      </button>
+      <a href="quote.html" class="action-btn quote-btn">View Quote</a>
+      <a href="list.html" class="action-btn list-btn">View List</a>
+    </div>
+  </header>
+
+  <!-- Floating Filter Modal -->
+  <div id="filterModal" class="filter-modal">
+    <div class="filter-content">
+      <button class="close-modal" onclick="toggleFilters()">× Close</button>
+      <h2>Filters</h2>
+
+      <div class="filter-group">
+        <label for="quickSearch">Search by Part Number / Model:</label>
+        <input type="text" id="quickSearch" placeholder="e.g. TD600, FTT-145, USIB450">
+      </div>
+
+      <div class="filter-group">
+        <label for="inletPressure">Inlet Pressure (psig):</label>
+        <input type="number" id="inletPressure" min="0" placeholder="e.g. 15">
+      </div>
+
+      <div class="filter-group">
+        <label for="condensateLoad">Condensate Load (lb/hr):</label>
+        <input type="number" id="condensateLoad" min="0" placeholder="e.g. 100">
+      </div>
+
+      <div class="filter-group">
+        <h3>Size</h3>
+        <div id="sizeFilters"></div>
+      </div>
+
+      <div class="filter-group">
+        <h3>Material</h3>
+        <div id="materialFilters"></div>
+      </div>
+
+      <div class="filter-group">
+        <h3>Type</h3>
+        <div id="typeFilters"></div>
+      </div>
+
+      <button class="apply-filters" onclick="debounceRender(); toggleFilters()">Apply Filters</button>
+      <button class="clear-filters" onclick="clearFilters(); debounceRender(); toggleFilters()">Clear All</button>
+    </div>
+  </div>
+
+  <!-- Mobile View Mode Toggle -->
+  <div class="view-toggle">
+    <label>Mobile View:</label>
+    <select id="mobileViewMode" onchange="switchMobileView()">
+      <option value="scroll-table">Table (scroll sideways)</option>
+      <option value="cards" selected>Cards (stacked vertically)</option>
+    </select>
+  </div>
+
+  <!-- Results Container -->
+  <div id="tableContainer" class="show-cards"></div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
