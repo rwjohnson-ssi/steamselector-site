@@ -176,6 +176,7 @@
     clearTimeout(timeout);
     timeout = setTimeout(renderTable, 280);
   }
+  window.debounceRender = debounceRender;
 
   // ── Quote & List interaction ─────────────────────────────────────────────
 
